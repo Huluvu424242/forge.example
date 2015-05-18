@@ -9,7 +9,15 @@
 
 	<properties>
 		<version.forge>2.13.0.Final</version.forge>
+		<maven.version>[3.1.1]</maven.version>
 	</properties>
+
+
+
+	<prerequisites>
+		<maven>${maven.version}</maven>
+	</prerequisites>
+
 
 
 	<dependencies>
@@ -51,6 +59,29 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<id>enforce-versions</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>${maven.version}</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>1.7+</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.jboss.forge.furnace</groupId>
 				<artifactId>furnace-maven-plugin</artifactId>

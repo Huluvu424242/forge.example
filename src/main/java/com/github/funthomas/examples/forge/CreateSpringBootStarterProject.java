@@ -21,21 +21,26 @@ public class CreateSpringBootStarterProject extends FurnaceLauncher {
 
 	@Override
 	public void executeTasks(AddonRegistry addonRegistry) {
+		
+		// Create a temporary directory as an example
+		final File tmpDir = OperatingSystemUtils.createTempDir();
+		
+		createProject(addonRegistry, tmpDir);
+	}
+
+	protected void createProject(AddonRegistry addonRegistry, final File tmpDir) {
 		final ProjectFactory projectFactory = addonRegistry.getServices(
 				ProjectFactory.class).get();
 		final ResourceFactory resourceFactory = addonRegistry.getServices(
 				ResourceFactory.class).get();
 
-		// Create a temporary directory as an example
-		final File underlyingResource = OperatingSystemUtils.createTempDir();
-
-		final Resource<File> projectDir = resourceFactory.create(underlyingResource);
+		final Resource<File> projectDir = resourceFactory.create(tmpDir);
 
 		// This could return more than one provider, but since the maven addon
 		// is the only one deployed, this is ok
 		final ProjectProvider projectProvider = addonRegistry.getServices(
 				ProjectProvider.class).get();
-
+			
 		// Creating WAR project
 		final JavaWebProjectType javaWebProjectType = addonRegistry.getServices(
 				JavaWebProjectType.class).get();
