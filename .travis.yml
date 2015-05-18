@@ -1,0 +1,15 @@
+language:
+    - java
+
+jdk:
+    - openjdk7
+
+env:
+   -  ciserver=true
+
+before_install:
+   - mvn clean
+
+script:
+   - mvn install
+
