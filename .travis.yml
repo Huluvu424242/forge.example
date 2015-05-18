@@ -5,12 +5,11 @@ jdk:
     - openjdk7
 
 env:
-   -  M2_HOME=/tmp/apache-maven-3.1.1
+   - ciserver=1
 
 install:
-   - sudo apt-get install maven=3.1
+   - mvn -version
 
 script:
-   - mvn -version
    - mvn clean install
 

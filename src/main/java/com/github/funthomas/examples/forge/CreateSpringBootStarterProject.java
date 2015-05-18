@@ -51,7 +51,7 @@ public class CreateSpringBootStarterProject extends FurnaceLauncher {
 		final MetadataFacet facet = project.getFacet(MetadataFacet.class);
 		facet.setProjectName("my-demo-project");
 		facet.setProjectVersion("1.0.0-SNAPSHOT");
-		facet.setTopLevelPackage("com.mycompany.project");
+		facet.setProjectGroupName("com.mycompany.project");
 
 		System.out.println("Project Created in: " + project);
 	}
